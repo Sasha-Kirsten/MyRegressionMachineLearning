@@ -2,22 +2,38 @@
 
 
 
+Energy Efficiency Prediction: Heating Load Analysis
 
-The task is based on an energy efficiency prediction problem which is a regression problem. More specifically, you are required to perform an analysis using different building shapes, with different characteristics, and predict the heating load of the building. The buildings differ with respect to the glazing area, the glazing area distribution, the orientation, and other aspects comprised in the dataset. 
+In this analysis, I'll be delving into a dataset related to the energy efficiency of different building shapes. My objective is to predict the heating load of a building based on various features.
 
-The dataset (below) for this task includes 9 features, denoted by X0, X1, ..., X8, and an outcome variable Y which needs to be predicted. The dataset contains missing values. Here is the meaning of the 10 variables:
+Data Inspection and Visualization
 
-X0:  Category of the building
-X1: Relative Compactness 
-X2: Surface Area 
-X3: Wall Area 
-X4: Roof Area 
-X5: Overall Height 
-X6: Orientation 
-X7: Glazing Area 
-X8: Glazing Area Distribution 
-Y: Heating Load 
+Upon loading the dataset, my first step will be to visualize the distribution of the heating load. This will give me a clearer understanding of our target variable.
 
-You are required to perform this analysis comprising: data inspection and visualisation, data preprocessing including data splitting in 70% training data, and 30% test data, data transformations you consider useful for this task, treatment of missing values, feature selection if you consider it useful for helping you achieve a better performance, etc. The analysis should include developing the predictive models based on the following algorithms already studied in this module, or that are going to be studied such as neural networks: simple Linear Regression, Ridge Regression, Lasso Regression, Elastic Net Regression, Polynomial Regression with regularisation, and Neural Network. These models (except simple Linear Regression which needs only to be simply trained) will be tuned using the training set. The training set will be used to select the best 2 models. Only these 2 best models will be evaluated on the test set. You can use any Python library.
+Data Preprocessing
 
-The code, comments and explanations will be provided in a Python Jupyter notebook, which should include also the results of running your notebook.
+Handling missing data is crucial. After inspecting the dataset for any missing values, I'll impute them using the median strategy. The choice of median is based on its robustness to outliers compared to the mean.
+
+For building our predictive models, I'll split the data into a training set (70%) and a test set (30%). This will ensure that I have a separate dataset to evaluate the model's performance.
+
+Given the varying scales of our features, I'll standardize them. This process will transform the features to have a mean of 0 and a variance of 1, ensuring that no particular feature disproportionately influences the models.
+
+Model Training
+
+I'll train various regression models:
+
+Simple Linear Regression: This will serve as a baseline model.
+Ridge Regression: Useful for preventing overfitting, especially when multicollinearity is present.
+Lasso Regression: This can help in feature selection by shrinking some coefficients to zero.
+Elastic Net Regression: A combination of Ridge and Lasso, it balances the strengths and weaknesses of the two methods.
+Polynomial Regression with Regularization: To capture non-linear relationships in the data.
+Neural Network: A more complex model that can capture intricate patterns in the data.
+With the exception of simple linear regression, I'll tune the hyperparameters of these models using the training set.
+
+Model Evaluation
+
+After training, I'll evaluate the models' performances on the training set using the Root Mean Squared Error (RMSE). This metric will guide me in selecting the best two models.
+
+Finally, only the top two models will be evaluated on the test set. This will provide an unbiased estimate of their performance on unseen data.
+
+In conclusion, this analysis aims to provide a comprehensive approach to predicting the heating load of buildings based on their characteristics. Through rigorous preprocessing, modeling, and evaluation, I aspire to select the best models for this task.
